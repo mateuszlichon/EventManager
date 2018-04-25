@@ -1,10 +1,19 @@
 package com.lichon.eventmanagement.entities;
 
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Participant extends AbstractEntity {
 
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
 	private String email;
 	private Boolean checkedIn;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(referencedColumnName = "ID", nullable = false, updatable = false)
 	private Event event;
 
 	public String getName() {
