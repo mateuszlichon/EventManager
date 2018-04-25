@@ -1,5 +1,6 @@
 package com.lichon.eventmanagement.entities;
 
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.OneToMany;
@@ -7,8 +8,8 @@ import javax.persistence.OneToMany;
 public class Organizer extends AbstractEntity {
 
 	private String name;
-	
-	@OneToMany(mappedBy="organizer")
+
+	@OneToMany(mappedBy = "organizer")
 	private Set<Event> events;
 
 	public String getName() {
@@ -27,5 +28,14 @@ public class Organizer extends AbstractEntity {
 		this.events = events;
 	}
 
-	
+	@Override
+	public boolean equals(Object obj) {
+		return Objects.equals(id, ((Organizer) obj).id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
 }

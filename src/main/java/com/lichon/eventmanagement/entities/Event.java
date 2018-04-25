@@ -2,6 +2,7 @@ package com.lichon.eventmanagement.entities;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -98,4 +99,13 @@ public class Event extends AbstractEntity {
 		this.venue = venue;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return Objects.equals(id, ((Event) obj).id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 }

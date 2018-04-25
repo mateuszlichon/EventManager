@@ -1,5 +1,7 @@
 package com.lichon.eventmanagement.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -46,6 +48,16 @@ public class Participant extends AbstractEntity {
 
 	public void setEvent(Event event) {
 		this.event = event;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return Objects.equals(id, ((Participant) obj).id);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 }
