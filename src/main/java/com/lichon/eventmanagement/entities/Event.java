@@ -4,6 +4,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 public class Event extends AbstractEntity {
 
 	private String name;
@@ -12,8 +18,12 @@ public class Event extends AbstractEntity {
 	private ZonedDateTime endTime;
 	private ZoneId zoneId;
 	private Boolean started;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(nullable = false)
 	private Organizer organizer;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Participant> participants;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Venue venue;
 
 	public String getName() {
