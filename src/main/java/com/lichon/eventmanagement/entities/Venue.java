@@ -2,6 +2,9 @@ package com.lichon.eventmanagement.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Venue extends AbstractEntity {
 
 	private String name;
