@@ -51,6 +51,10 @@ public class Participant extends AbstractEntity {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+	
+	public Long getResourceId() {
+		return this.id;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

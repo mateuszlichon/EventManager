@@ -103,6 +103,10 @@ public class Event extends AbstractEntity {
 	public void setVenue(Venue venue) {
 		this.venue = venue;
 	}
+	
+	public Long getResourceId() {
+		return this.id;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
