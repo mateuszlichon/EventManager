@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"resourceId"})
 @Entity
 public class Event extends AbstractEntity {
 
