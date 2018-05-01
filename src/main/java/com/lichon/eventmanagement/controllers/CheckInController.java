@@ -1,6 +1,8 @@
 package com.lichon.eventmanagement.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.PersistentEntityResource;
+import org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +21,7 @@ public class CheckInController {
 	private ParticipantRepository participantRepository;
 
 	@PostMapping("/checkin/{id}")
-	public ResponseEntity<Participant> checkIn(@PathVariable Long id) {
+	public ResponseEntity<PersistentEntityResource> checkIn(@PathVariable Long id, PersistentEntityResourceAssembler assembler) {
 
 		Participant participant = participantRepository.findOne(id);
 
@@ -31,6 +33,6 @@ public class CheckInController {
 			participantRepository.save(participant);
 		}
 
-		return null;
+		return ResponseEntity.ok(assembler.toResource(participant));
 	}
 }
