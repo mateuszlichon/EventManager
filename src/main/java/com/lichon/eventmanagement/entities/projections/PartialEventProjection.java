@@ -1,10 +1,11 @@
 package com.lichon.eventmanagement.entities.projections;
 
+import java.time.Instant;
 import java.time.ZonedDateTime;
 
 import org.springframework.data.rest.core.config.Projection;
 
-import antlr.debug.Event;
+import com.lichon.eventmanagement.entities.Event;
 
 @Projection(name = "partial", types = { Event.class })
 public interface PartialEventProjection {
@@ -14,4 +15,6 @@ public interface PartialEventProjection {
 	ZonedDateTime getStartTime();
 
 	ZonedDateTime getEndTime();
+	
+	Instant getCreated();
 }
