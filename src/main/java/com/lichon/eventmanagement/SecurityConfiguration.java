@@ -19,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.POST, "/events").hasRole("ADMIN")
 		.antMatchers(HttpMethod.PUT, "/events/**").hasRole("ADMIN")
-		.antMatchers(HttpMethod.PATCH, "/events/**");
+		.antMatchers(HttpMethod.PATCH, "/events/**").hasRole("ADMIN").and()
+		.csrf().disable();
 	}
 }
