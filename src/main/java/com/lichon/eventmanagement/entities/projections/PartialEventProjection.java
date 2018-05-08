@@ -17,4 +17,6 @@ public interface PartialEventProjection {
 	ZonedDateTime getEndTime();
 	
 	Instant getCreated();
+	
+	Long getResourceId();
 }
